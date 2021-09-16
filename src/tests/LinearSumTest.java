@@ -9,7 +9,7 @@ import static implementation.LinearSum.linearSum;
 public class LinearSumTest {
 	@Test
 	void test() {
-		int [] A = {1, 2, 3};
+		int[] A = {1, 2, 3};
 		
 		int x = linearSum(A, 3);
 		
