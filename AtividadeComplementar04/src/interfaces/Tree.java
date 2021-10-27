@@ -1,8 +1,6 @@
 package interfaces;
 
 import java.util.Iterator;
-import exceptions.BoundaryViolationException;
-import exceptions.EmptyTreeException;
 import exceptions.InvalidPositionException;
 
 
@@ -16,11 +14,7 @@ public interface Tree<E> extends Iterable<E> {
 
 	public Iterable<Position<E>> positions();
 
-	public E replace(Position<E> v, E e) throws InvalidPositionException;
-
-	public TreePosition<E> root() throws EmptyTreeException;
-
-	public TreePosition<E> parent(Position<E> v) throws InvalidPositionException, BoundaryViolationException;
+	public E replace(Position<E> v, E e) throws InvalidPositionException;	
 
 	public Iterable<Position<E>> children(Position<E> v) throws InvalidPositionException;
 

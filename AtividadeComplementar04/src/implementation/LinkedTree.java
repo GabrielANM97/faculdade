@@ -145,13 +145,10 @@ public class LinkedTree<E> implements Tree<E> {
 		
 	protected TreePosition<E> createNode(E element, TreePosition<E> parent, PositionList<Position<E>> children) {
 	
-	return new TreeNode<E>(element, parent, children);
+		return new TreeNode<E>(element, parent, children);
 	
 	}
 	
-	//Cria uma lista armazenando os nodos das subárvore de um nodo
-	
-	//ordenado de acordo com a travessia das subárvores
 	
 	protected void preorderPositions(Position<E> v, PositionList<Position<E>> pos) throws InvalidPositionException {
 	
@@ -182,18 +179,91 @@ public class LinkedTree<E> implements Tree<E> {
 		return "[" + s + "]";
 		
 	}
+	
+	public int diskSpace(LinkedTree<DiscNode> T, TreePosition<DiscNode> v) {
+
+		int s = v.element().getKbytes();
+
+		for (Position<DiscNode> w : v.getChildren()) {
+
+			s += diskSpace(T, (TreePosition<DiscNode>)w);
+
+		}
+
+		if (T.isInternal(v)) {
+
+			System.out.println(v.getElement().getName() + ": " + s);
+
+		}
+
+		return s;
+
+	}
+	
+	
+	public String parentheticRepresentation (Tree<E> T, Position<E> v) {
+
+		String s = v.element().toString();
+
+		if (T.isInternal(v)) {
+
+			Boolean firstTime = true;
+
+			for (Position<E> w : T.children(v)) {
+
+				if (firstTime) {
+
+					s += "(\n" + parentheticRepresentation(T, w);
+
+					firstTime = false;
+
+				} else {
+
+					s += "," + parentheticRepresentation(T, w);
+
+				}
+
+				s += ")"; // fecha parênteses
+
+			}
+
+		}
+
+		return s;
+	}
+	
+	protected void postorder(LinkedTree<E> T, Position<E> v) throws InvalidPositionException {
+		
+		for (Position<E> w : children(v)) postorder(T, w);
+		
+		
+	}
+	
+	public Integer depth(LinkedTree<E> T, Position<E> v) {
+		if (T.root == v) {
+			return 0;
+		}
+		else {
+			Position<E> w = T.parent(v);
+			return 1 + T.depth(T, w);
+		}
+	}
+	
+	public Integer height1(LinkedTree<E> T) {
+		Integer h = 0;
+		for (E v : T) {
+			TreePosition<E> s;
+			s.setElement(v);
+			if (T.isExternal(s)) {
+					h = Max(h, depth(T, s));
+			}
+		}
+		return h;
+	}
+
+	private Integer Max(Integer h, Integer depth) {
+		return h + depth;
+	}
+	
+
 }
-
-//EXERCÍCIO PARA OS ALUNOS
-
-//Implementar:
-
-//depth
-
-//height1
-
-//height2
-
-//parentheticRepresentation
-
-//toStringPostorder
