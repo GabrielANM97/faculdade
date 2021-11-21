@@ -5,13 +5,14 @@ import exceptions.EmptyStackException;
 import exceptions.FullStackException;
 import interfaces.Stack;
 
-public class ArrayStack<E> implements Stack<E> {
+@SuppressWarnings("hiding")
+public class ArrayStack<Aluno> implements Stack<Aluno> {
 	
 	protected int capacity;
 	
 	public static final int CAPACITY = 1000;
 	
-	protected E S[];
+	protected Aluno S[];
 	
 	protected int top = -1;
 	
@@ -26,7 +27,7 @@ public class ArrayStack<E> implements Stack<E> {
 	
 		capacity = cap;
 	
-		S = (E[]) new Object[capacity];
+		S = (Aluno[]) new Object[capacity];
 	
 	}
 	
@@ -42,7 +43,7 @@ public class ArrayStack<E> implements Stack<E> {
 	
 	}
 	
-	public void push(E element) throws FullStackException {
+	public void push(Aluno element) throws FullStackException {
 	
 		if (size() == capacity)
 			throw new FullStackException("Stack is full.");
@@ -51,7 +52,7 @@ public class ArrayStack<E> implements Stack<E> {
 	
 	}
 	
-	public E top() throws EmptyStackException {
+	public Aluno top() throws EmptyStackException {
 
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 
@@ -59,9 +60,9 @@ public class ArrayStack<E> implements Stack<E> {
 
 	}
 
-	public E pop() throws EmptyStackException {
+	public Aluno pop() throws EmptyStackException {
 
-		E element;
+		Aluno element;
 
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 
@@ -85,7 +86,7 @@ public class ArrayStack<E> implements Stack<E> {
 
 			for (int i = 1; i <= size() - 1; i++) {
 
-				s += ", " + S[i];
+				s += ",\n\n" + S[i];
 
 			}
 		}

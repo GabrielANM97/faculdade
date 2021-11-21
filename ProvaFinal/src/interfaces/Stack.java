@@ -2,7 +2,7 @@ package interfaces;
 
 import exceptions.EmptyStackException;
 
-public interface Stack<E> {
+public interface Stack<Aluno> {
 	
 	public int size();
 	
@@ -10,12 +10,12 @@ public interface Stack<E> {
 	public boolean isEmpty();
 	
 	
-	public E top() throws EmptyStackException;
+	public Aluno top() throws EmptyStackException;
 	
 	
-	public void push(E element);
+	public void push(Aluno element);
 	
 		
-	public E pop() throws EmptyStackException;
+	public Aluno pop() throws EmptyStackException;
 
 }
