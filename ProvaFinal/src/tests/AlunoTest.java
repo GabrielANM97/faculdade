@@ -9,6 +9,7 @@ import implementation.Aluno;
 public class AlunoTest {
 	Aluno aluno = new Aluno(202156785, "Zé das Coves", "Tão Tão Distante", 945657897, "01/01/1990");
 	
+	
 	@Test
 	void getersTest() {
 		assertEquals(202156785, aluno.getRA());
@@ -16,6 +17,8 @@ public class AlunoTest {
 		assertEquals("Tão Tão Distante", aluno.getEndereco());
 		assertEquals(945657897, aluno.getCelular());
 		assertEquals("01/01/1990", aluno.getDataDeNascimento());
+		System.out.println(aluno.toString());
+		
 	}
 	
 	@Test

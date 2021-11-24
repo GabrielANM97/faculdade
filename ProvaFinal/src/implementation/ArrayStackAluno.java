@@ -5,8 +5,7 @@ import exceptions.EmptyStackException;
 import exceptions.FullStackException;
 import interfaces.Stack;
 
-@SuppressWarnings("hiding")
-public class ArrayStack<Aluno> implements Stack<Aluno> {
+public class ArrayStackAluno implements Stack {
 	
 	protected int capacity;
 	
@@ -16,19 +15,20 @@ public class ArrayStack<Aluno> implements Stack<Aluno> {
 	
 	protected int top = -1;
 	
-	public ArrayStack() {
+	protected ArrayIndexListAluno index;
 	
-		this(CAPACITY); 
+	public ArrayStackAluno(ArrayIndexListAluno index) {
+	
+		this(CAPACITY, index); 
 	}
 	
-	@SuppressWarnings("unchecked")
 	
-	public ArrayStack(int cap) {
+	public ArrayStackAluno(int cap, ArrayIndexListAluno index) {
 	
 		capacity = cap;
 	
-		S = (Aluno[]) new Object[capacity];
-	
+		S = new Aluno[capacity];
+		this.index = index;
 	}
 	
 	public int size() {
@@ -49,6 +49,10 @@ public class ArrayStack<Aluno> implements Stack<Aluno> {
 			throw new FullStackException("Stack is full.");
 	
 		S[++top] = element;
+		
+		AlunoIndex alunoIndex = new AlunoIndex(element.getRA(), element);
+		
+		index.add(alunoIndex);
 	
 	}
 	
@@ -69,9 +73,10 @@ public class ArrayStack<Aluno> implements Stack<Aluno> {
 		element = S[top];
 
 		S[top--] = null;
-
+		
+//		index.remove(element.getRA());
+		
 		return element;
-
 	}
 
 	public String toString() {

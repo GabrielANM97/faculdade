@@ -9,11 +9,13 @@ import org.junit.jupiter.api.Test;
 import exceptions.EmptyStackException;
 import exceptions.FullStackException;
 import implementation.Aluno;
-import implementation.ArrayStack;
+import implementation.ArrayIndexListAluno;
+import implementation.ArrayStackAluno;
 
 public class ArrayStackTest {
 	
-	static final ArrayStack<Aluno> a = new ArrayStack<Aluno>(2);
+	ArrayIndexListAluno index = new ArrayIndexListAluno();
+	ArrayStackAluno a = new ArrayStackAluno(2, index);
 
 	@Test
 	void pilhaAlunos() {

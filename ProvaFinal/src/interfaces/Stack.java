@@ -1,8 +1,9 @@
 package interfaces;
 
 import exceptions.EmptyStackException;
+import implementation.Aluno;
 
-public interface Stack<Aluno> {
+public interface Stack {
 	
 	public int size();
 	
