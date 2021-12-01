@@ -1,34 +1,32 @@
 package implementation;
 
-
 import exceptions.EmptyStackException;
 import exceptions.FullStackException;
 import interfaces.Stack;
 
-public class ArrayStackAluno implements Stack {
+public class ArrayStackAluno<E> implements Stack<E> {
 	
 	protected int capacity;
 	
 	public static final int CAPACITY = 1000;
 	
-	protected Aluno S[];
+	protected E S[];
 	
 	protected int top = -1;
 	
-	protected ArrayIndexListAluno index;
+	public ArrayStackAluno() {
 	
-	public ArrayStackAluno(ArrayIndexListAluno index) {
-	
-		this(CAPACITY, index); 
+		this(CAPACITY); 
 	}
 	
+	@SuppressWarnings("unchecked")
 	
-	public ArrayStackAluno(int cap, ArrayIndexListAluno index) {
+	public ArrayStackAluno(int cap) {
 	
 		capacity = cap;
 	
-		S = new Aluno[capacity];
-		this.index = index;
+		S = (E[]) new Object[capacity];
+	
 	}
 	
 	public int size() {
@@ -43,20 +41,16 @@ public class ArrayStackAluno implements Stack {
 	
 	}
 	
-	public void push(Aluno element) throws FullStackException {
+	public void push(E element) throws FullStackException {
 	
 		if (size() == capacity)
 			throw new FullStackException("Stack is full.");
 	
 		S[++top] = element;
-		
-		AlunoIndex alunoIndex = new AlunoIndex(element.getRA(), element);
-		
-		index.add(alunoIndex);
 	
 	}
 	
-	public Aluno top() throws EmptyStackException {
+	public E top() throws EmptyStackException {
 
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 
@@ -64,19 +58,18 @@ public class ArrayStackAluno implements Stack {
 
 	}
 
-	public Aluno pop() throws EmptyStackException {
+	public E pop() throws EmptyStackException {
 
-		Aluno element;
+		E element;
 
 		if (isEmpty()) throw new EmptyStackException("Stack is empty.");
 
 		element = S[top];
 
 		S[top--] = null;
-		
-//		index.remove(element.getRA());
-		
+
 		return element;
+
 	}
 
 	public String toString() {
@@ -91,7 +84,7 @@ public class ArrayStackAluno implements Stack {
 
 			for (int i = 1; i <= size() - 1; i++) {
 
-				s += ",\n\n" + S[i];
+				s += ", " + S[i];
 
 			}
 		}

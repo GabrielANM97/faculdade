@@ -9,13 +9,11 @@ import org.junit.jupiter.api.Test;
 import exceptions.EmptyStackException;
 import exceptions.FullStackException;
 import implementation.Aluno;
-import implementation.ArrayIndexListAluno;
 import implementation.ArrayStackAluno;
 
 public class ArrayStackTest {
 	
-	ArrayIndexListAluno index = new ArrayIndexListAluno();
-	ArrayStackAluno a = new ArrayStackAluno(2, index);
+	ArrayStackAluno<Aluno> a = new ArrayStackAluno<Aluno>(2);
 
 	@Test
 	void pilhaAlunos() {
@@ -30,7 +28,7 @@ public class ArrayStackTest {
 		
 		a.push(aluno2);
 
-		assertEquals("[" + aluno1.toString() + ",\n\n" + aluno2.toString() + "]", a.toString());
+		assertEquals("[" + aluno1.toString() + ", " + aluno2.toString() + "]", a.toString());
 
 		Aluno aluno3 = new Aluno(202156787, "Zé das Cenouras", "Tão Tão Tão Tão Distante", 945657898, "03/01/1990");
 		

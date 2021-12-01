@@ -1,8 +1,9 @@
 package interfaces;
 
+import implementation.Aluno;
 import implementation.AlunoIndex;
 
-public interface IndexList{
+public interface IndexList {
 
 	public int size();
 
@@ -10,9 +11,12 @@ public interface IndexList{
 	public boolean isEmpty();
 
 
-	public void add(AlunoIndex e);
+	public void add(AlunoIndex index);
 
-
-	public AlunoIndex remove(int i);
+	
+	public void remove(long RA);
+	
+	
+	public Aluno binarySearch(long RA); 
 
 }

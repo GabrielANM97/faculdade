@@ -20,6 +20,6 @@ public class AlunoIndex {
 	public void setAluno(Aluno aluno) { this.aluno = aluno; }
 	
 	public String toString() {
-		return "O numero de RA " + RA + " corresponde ao aluno " + aluno;
+		return "O numero de RA " + RA + " corresponde ao aluno: " + aluno;
 	}
 }
